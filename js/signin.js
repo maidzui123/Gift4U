@@ -25,7 +25,7 @@ signInBtn.addEventListener("click", (e) => {
             signInToast.showAlert("Login Successful!", "green")
             localStorage.setItem("checkPage", 1) 
             await new Promise(resolve => setTimeout(resolve, 1000));
-            window.location.href = 'index.html'
+            window.location.href = '/index.html'
           }
           signIn();
     }

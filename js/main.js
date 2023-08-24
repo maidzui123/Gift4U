@@ -20,6 +20,7 @@ var giftSong = document.getElementById("giftSong")
 var maiduyOuter = document.getElementById("maiduyOuter")
 var giftPresent = document.getElementById("giftPresent")
 var checkSignin = 0
+localStorage.setItem("checkPage", 0)
 function checkPage() {
     if (localStorage.getItem("checkPage") == "0") {
         window.location.href = "/components/signin.html"

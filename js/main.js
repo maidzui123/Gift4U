@@ -82,6 +82,8 @@ btnInstructor.addEventListener("click", function (e) {
             break;
         case 11:
             newChat("Log Out.")
+            break;
+        case 12:
             signOut(auth)
                 .then(() => {
                     window.location.href = "signin.html"

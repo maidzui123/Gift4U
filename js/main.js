@@ -1,3 +1,22 @@
+
+import {
+    getAuth,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
+
+// Check Sign In
+const auth = getAuth();
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        const uid = user.uid;
+        console.log(uid);
+    } else {
+        // User is signed out
+        window.location.href = "signin.html"
+        // ...
+    }
+});
 var mainContainer = document.getElementById("mainContainer")
 var cakeOuter = document.getElementById("cakeOuter")
 var instructorOuter = document.getElementById("instructorOuter")
@@ -20,16 +39,6 @@ var giftSong = document.getElementById("giftSong")
 var maiduyOuter = document.getElementById("maiduyOuter")
 var giftPresent = document.getElementById("giftPresent")
 var checkSignin = 0
-localStorage.setItem("checkPage", 0)
-function checkPage() {
-    if (localStorage.getItem("checkPage") == "0") {
-        window.location.href = "/components/signin.html"
-    }
-    else {
-        localStorage.setItem("checkPage", 0)
-    }
-}
-window.onload = checkPage
 // Stop music first time sign in
 hpbdSong.pause()
 giftSong.pause()
@@ -70,7 +79,16 @@ btnInstructor.addEventListener("click", function (e) {
             break;
         case 10:
             newChat("Hết òi hihihihi. Thích hong babi :>")
-            presentActive()
+            break;
+        case 11:
+            newChat("Log Out.")
+            signOut(auth)
+                .then(() => {
+                    window.location.href = "signin.html"
+                })
+                .catch((error) => {
+                    // An error happened.
+                });
             break;
 
     }
